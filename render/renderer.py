@@ -12,10 +12,10 @@ class EmailRenderer:
     def __init__(self, config: dict):
         self.config = config
         self.template = self._load_template()
-        # Design tokens for Droyd branding (email-safe)
+        # Design tokens for MindCo branding (email-safe)
         self.tokens = {
-            "brandName": "Droyd",
-            "logoUrl": "https://dummyimage.com/200x40/8B5CF6/FFFFFF&text=Droyd",
+            "brandName": "MindCo",
+            "logoUrl": "https://dummyimage.com/200x40/8B5CF6/FFFFFF&text=MindCo",
             "color": {
                 "bg": "#FAFAFA",
                 "panel": "#FFFFFF",

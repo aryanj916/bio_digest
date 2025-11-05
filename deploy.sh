@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Droyd Daily Robotics Digest - Production Deployment Script
+# MindCo Bio Daily Research Digest - Production Deployment Script
 
-echo "🚀 Setting up Droyd Daily Robotics Digest for production..."
+echo "🚀 Setting up MindCo Bio Daily Research Digest for production..."
 
 # Check if Python 3.8+ is installed
 python3 --version > /dev/null 2>&1

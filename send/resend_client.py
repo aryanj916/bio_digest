@@ -41,7 +41,7 @@ class ResendClient:
     
     def send_test(self, recipient: str, html_content: str) -> bool:
         """Send a test email to a single recipient."""
-        subject = f"[TEST] Droyd Robotics Digest - {datetime.now().strftime('%Y-%m-%d')}"
+        subject = f"[TEST] MindCo Bio Research Digest - {datetime.now().strftime('%Y-%m-%d')}"
         
         return self.send_digest(
             recipients=[recipient],

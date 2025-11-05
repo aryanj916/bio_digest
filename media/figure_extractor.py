@@ -15,7 +15,7 @@ class FigureExtractor:
         self.config = config
         self.prefer_ar5iv = config.get('media', {}).get('prefer_ar5iv', True)
         self.headers = {
-            'User-Agent': 'DroydDigestBot/1.0 (+https://github.com/droyd/robotics_digest)'
+            'User-Agent': 'MindCoDigestBot/1.0 (+https://github.com/aryanj916/bio_digest)'
         }
     
     def extract_figure(self, paper: Dict) -> Dict:
