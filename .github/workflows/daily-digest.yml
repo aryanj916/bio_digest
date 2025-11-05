@@ -1,0 +1,70 @@
+name: Daily Biomedical AI Digest
+
+on:
+  schedule:
+    # Run at 9:00 AM PST/PDT on weekdays only (Monday-Friday)
+    # Using 17:00 UTC which is 9:00 AM PST (UTC-8) and 10:00 AM PDT (UTC-7)
+    # This ensures consistent timing regardless of daylight saving time
+    - cron: '0 17 * * 1-5'  # 9:00 AM PST / 10:00 AM PDT on weekdays
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    # NEW: Install system dependencies for PDF processing
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y poppler-utils
+        echo "Poppler installed for PDF preview generation"
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    # NEW: Create necessary directories
+    - name: Create directories
+      run: |
+        mkdir -p media
+        mkdir -p social
+        mkdir -p web/assets
+        echo "Created required directories"
+    
+    # Download previous database to avoid duplicates
+    - name: Download previous database
+      uses: actions/download-artifact@v4
+      with:
+        name: digest-database
+      continue-on-error: true  # Don't fail if no previous database exists
+    
+    - name: Run digest pipeline
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        DATABASE_PATH: ./digest.db
+        # X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}  # Optional: uncomment if you add X API key
+      run: |
+        echo "Current time: $(date)"
+        echo "Current timezone: $(date +%Z)"
+        echo "Running biomedical AI digest pipeline..."
+        python main.py --force --verbose
+    
+    - name: Upload database artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: digest-database
+        path: digest.db
+        retention-days: 30
+    

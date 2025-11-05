@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Daily Research Digest - {{ date }}</title>
+    <style>
+        /* Reset and base styles */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+        body { margin: 0; padding: 0; width: 100% !important; min-width: 100%; background-color: #FAFAFA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1F2937; }
+        
+        /* Container */
+        .container { max-width: 680px; margin: 0 auto; background-color: #FAFAFA; }
+        
+        /* Header - Medical blue/teal gradient */
+        .header { background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%); color: white; padding: 28px 28px 22px; text-align: left; border-radius: 28px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .header h1 { margin: 0; font-size: 22px; font-weight: 700; color: white; }
+        .header .date { margin-top: 8px; font-size: 12px; opacity: 0.9; font-weight: 600; }
+        .brand { display:block; margin:0 auto; text-align:center; color:#FFFFFF; font:700 20px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        /* Digest Summary */
+        .digest-summary { margin-top: 16px; padding: 14px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 14px; }
+        .digest-summary h3 { margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: white; }
+        .digest-summary ul { margin: 0 0 0 20px; padding: 0; }
+        .digest-summary li { margin: 4px 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.95); }
+        
+        /* Web View Link */
+        .web-view-link { display: inline-block; margin-top: 12px; padding: 8px 16px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        .web-view-link:hover { background: rgba(255,255,255,0.25); }
+        
+        /* Section */
+        .section { padding: 24px 6px; }
+        .section-title { font-size: 18px; font-weight: 700; color: #374151; margin: 0 0 14px 0; }
+        
+        /* Paper card */
+        .paper { margin-bottom: 18px; padding: 18px 18px 16px; background: #FFFFFF; border-radius: 20px; border: 1px solid #E5E7EB; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .paper-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .paper-title a { color: #1F2937; text-decoration: none; }
+        .paper-title a:hover { color: #4F46E5; text-decoration: none; }
+        
+        /* Paper Figure */
+        .paper-figure { margin: 10px 0; text-align: center; }
+        .paper-figure img { max-width: 100%; height: auto; max-height: 200px; border-radius: 12px; border: 1px solid #E5E7EB; }
+        
+        /* Badges */
+        .badges { margin: 8px 0; }
+        .badge { display: inline-block; padding: 6px 8px; margin-right: 6px; margin-bottom: 6px; background: rgba(16,185,129,.1); color: #065F46; font-size: 11px; font-weight: 700; border-radius: 999px; border:1px solid rgba(16,185,129,.3); letter-spacing:.4px; text-transform:uppercase }
+        .badge.high-priority { background: rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.3); color: #3730A3; }
+        
+        /* Summary and why it matters */
+        .summary { margin: 10px 0; color: #1F2937; font-size: 14px; line-height: 1.55; }
+        .why-matters { margin: 10px 0; padding: 12px; background: rgba(99,102,241,.05); border-radius: 14px; font-size: 13px; color: #1F2937; border:1px solid rgba(99,102,241,.2); }
+        
+        /* Links */
+        .paper-links { margin-top: 10px; }
+        .paper-links a { display: inline-block; margin-right: 8px; padding: 9px 12px; background: #F3F4F6; color: #374151; text-decoration: none; font-size: 13px; font-weight:600; border-radius: 12px; border:1px solid #D1D5DB; }
+        .paper-links a.secondary { background: #ECFDF5; border:1px solid #10B981; color: #065F46; }
+        .paper-links a.x-link { background: #F0F9FF; border:1px solid #0EA5E9; color: #075985; }
+        
+        /* Bucket list */
+        .bucket-list { margin: 15px 0; }
+        .bucket-item { margin-bottom: 16px; padding: 16px; background: #FFFFFF; border-radius: 14px; border:1px solid #E5E7EB; min-height: 120px; }
+        .bucket-item-title { font-weight: 700; margin-bottom: 5px; }
+        .bucket-item-title a { color: #1F2937; text-decoration: none; }
+        .bucket-item-title a:hover { color: #4F46E5; }
+        .bucket-item-summary { font-size: 13px; color: #6B7280; }
+        .bucket-item-meta { margin-top: 8px; font-size: 12px; }
+        .bucket-item-meta a { color: #6366F1; text-decoration: none; font-weight: 600; }
+        
+        /* Footer */
+        .footer { padding: 20px; text-align: center; font-size: 12px; color: #6B7280; }
+        .footer a { color: #6366F1; text-decoration: none; }
+        
+        /* Mobile responsive */
+        @media screen and (max-width: 680px) {
+            .container { width: 100% !important; }
+            .section { padding: 20px 15px; }
+            .paper { padding: 12px; }
+            .paper-title { font-size: 15px; }
+            .paper-figure img { max-height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="brand">{{ tokens.brandName }}</div>
+            <div class="date">{{ date_formatted }}</div>
+            
+            {% if digest_summary %}
+            <div class="digest-summary">
+                <h3>📚 {{ digest_summary.headline }}</h3>
+                <ul>
+                    {% for bullet in digest_summary.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            
+            <a href="https://pubmed.ncbi.nlm.nih.gov/" style="display:inline-block;margin-top:10px;font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:white;text-decoration:none;outline:none;border:none;">View on PubMed →</a>
+            <a href="https://www.biorxiv.org/" style="display:inline-block;margin-top:10px;margin-left:12px;font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:white;text-decoration:none;outline:none;border:none;">View on bioRxiv →</a>
+        </div>
+        
+        <!-- Top Picks Section -->
+        {% if top_picks %}
+        <div class="section">
+            <h2 class="section-title">🌟 Top {{ top_picks|length }} Picks</h2>
+            <p style="font-size: 14px; color: #6b7280; margin-bottom: 20px;">
+                Most impactful papers for biotech innovation, clinical AI, and neurotech
+            </p>
+            
+            {% for paper in top_picks %}
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="{{ paper.arxiv_link }}" target="_blank">{{ paper.title }}</a>
+                    {% if paper.version > 1 %}
+                    <span style="color: #059669; font-size: 12px; margin-left: 5px;">(v{{ paper.version }})</span>
+                    {% endif %}
+                </div>
+                
+                <div class="badges">
+                    {% for bucket in paper.buckets[:3] %}
+                    <span class="badge {% if loop.first %}high-priority{% endif %}" style="{{ badge_style_by_bucket.get(bucket, '') }}">{{ bucket }}</span>
+                    {% endfor %}
+                    {% if paper.greylisted %}
+                    <span class="badge" style="background: #fef3c7; color: #92400e;">Transferable</span>
+                    {% endif %}
+                </div>
+                
+                {% if paper.figure_url %}
+                <div class="paper-figure">
+                    <img src="{{ paper.figure_url }}" alt="Paper figure">
+                </div>
+                {% endif %}
+                
+                {% if paper.summary %}
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> {{ paper.summary }}
+                </div>
+                {% endif %}
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> {{ paper.why_it_matters }}
+                </div>
+                
+                <div class="paper-links">
+                    <a href="{{ paper.pdf_link }}" target="_blank">📄 PDF</a>
+                    {% if paper.code_urls %}
+                    <a href="{{ paper.code_urls[0] }}" target="_blank">💻 Code</a>
+                    {% endif %}
+                    {% if paper.dataset_urls %}
+                    <a href="{{ paper.dataset_urls[0] }}" target="_blank" class="secondary">📊 Dataset</a>
+                    {% endif %}
+                    {% if paper.x_url %}
+                    <a href="{{ paper.x_url }}" target="_blank" class="x-link">𝕏 Discussion</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Papers by Bucket -->
+        {% for bucket_name, papers in buckets.items() %}
+        {% if papers %}
+        <div class="section">
+            <h3 class="section-title">{{ bucket_name }} ({{ papers|length }})</h3>
+            <div class="bucket-list">
+                {% for paper in papers %}
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="{{ paper.arxiv_link }}" target="_blank">{{ paper.title }}</a>
+                        {% if paper.code_urls %}
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        {% endif %}
+                    </div>
+                    <div class="bucket-item-summary">
+                        {% set summary = paper.why_it_matters[:600] %}
+                        {% if paper.why_it_matters|length > 600 %}
+                            {% set last_period = summary.rfind('.') %}
+                            {% set last_space = summary.rfind(' ') %}
+                            {% if last_period > 500 %}
+                                {{ summary[:last_period + 1] }}
+                            {% elif last_space > 550 %}
+                                {{ summary[:last_space] }}.
+                            {% else %}
+                                {{ summary }}
+                            {% endif %}
+                        {% else %}
+                            {{ summary }}
+                        {% endif %}
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="{{ paper.pdf_link }}" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        {% if paper.x_url %}
+                        <a href="{{ paper.x_url }}" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600;">𝕏 Discussion</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        
+        <!-- Also Noteworthy -->
+        {% if also_noteworthy %}
+        <div class="section">
+            <h3 class="section-title">Also Noteworthy</h3>
+            <div class="bucket-list">
+                {% for paper in also_noteworthy %}
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="{{ paper.arxiv_link }}" target="_blank">{{ paper.title }}</a>
+                    </div>
+                    <div class="bucket-item-summary">
+                        Score: {{ paper.final_score|round(1) }} | 
+                        {% set summary = paper.why_it_matters[:400] %}
+                        {% if paper.why_it_matters|length > 400 %}
+                            {% set last_period = summary.rfind('.') %}
+                            {% set last_space = summary.rfind(' ') %}
+                            {% if last_period > 300 %}
+                                {{ summary[:last_period + 1] }}
+                            {% elif last_space > 350 %}
+                                {{ summary[:last_space] }}.
+                            {% else %}
+                                {{ summary }}
+                            {% endif %}
+                        {% else %}
+                            {{ summary }}
+                        {% endif %}
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="{{ paper.pdf_link }}" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        {% if paper.x_url %}
+                        <a href="{{ paper.x_url }}" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600;">𝕏 Discussion</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                Papers from the last 24 hours | 
+                Sources: PubMed, bioRxiv, medRxiv
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="mailto:digest@internal.mindcompany.ai?subject=Manage%20recipients">Manage recipients</a> | 
+                <span>Bio Daily Research Digest</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

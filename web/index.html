@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Droyd Robotics Digest - Wednesday, August 20, 2025</title>
+    <style>
+        /* Reset and base styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(to bottom, #FAFAFA, #F3F4F6);
+            color: #1F2937;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+            margin-bottom: 32px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header-meta {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        /* Digest Summary */
+        .digest-summary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .digest-summary h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .digest-summary ul {
+            margin-left: 20px;
+            list-style: none;
+        }
+        
+        .digest-summary li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .digest-summary li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+        }
+        
+        /* Section headers */
+        .section-header {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin: 32px 0 16px;
+        }
+        
+        /* Paper card */
+        .paper-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .paper-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        
+        .paper-content {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .paper-figure {
+            flex-shrink: 0;
+            width: 200px;
+        }
+        
+        .paper-figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+            object-fit: cover;
+            max-height: 150px;
+        }
+        
+        .paper-details {
+            flex: 1;
+        }
+        
+        .paper-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .paper-title a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: #6366F1;
+        }
+        
+        /* Badges */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 999px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #4C1D95;
+        }
+        
+        .badge.high-score {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #065F46;
+        }
+        
+        /* Paper summary */
+        .paper-summary {
+            margin: 12px 0;
+            color: #4B5563;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .why-matters {
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 3px solid #6366F1;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        /* Links */
+        .paper-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .paper-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            background: #F9FAFB;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .paper-links a:hover {
+            background: #F3F4F6;
+            border-color: #9CA3AF;
+        }
+        
+        .paper-links a.primary {
+            background: #EEF2FF;
+            border-color: #6366F1;
+            color: #4338CA;
+        }
+        
+        .paper-links a.primary:hover {
+            background: #E0E7FF;
+        }
+        
+        /* Collapsible sections */
+        details {
+            margin-bottom: 16px;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        details summary {
+            padding: 16px 20px;
+            background: linear-gradient(to right, #F9FAFB, #F3F4F6);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        
+        details summary:hover {
+            background: linear-gradient(to right, #F3F4F6, #E5E7EB);
+        }
+        
+        details summary::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+        
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .bucket-content {
+            padding: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .paper-content {
+                flex-direction: column;
+            }
+            
+            .paper-figure {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .header {
+                padding: 24px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 48px;
+            padding: 24px;
+            text-align: center;
+            color: #6B7280;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #6366F1;
+            text-decoration: none;
+        }
+        
+        /* Highlights */
+        .highlights {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-top: 16px;
+        }
+        
+        .highlights h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #92400E;
+        }
+        
+        .highlights ul {
+            margin-left: 20px;
+            font-size: 13px;
+            color: #78350F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🤖 Droyd Robotics Digest</h1>
+            <div class="header-meta">
+                Wednesday, August 20, 2025 • Papers from the last 24 hours
+            </div>
+            
+            
+            <div class="digest-summary">
+                <h3>📚 Today's theme: Learn robust skills from less data and generalize everywhere.</h3>
+                <ul>
+                    
+                    <li>Let's test the 'pointing' representation from Embodied-R1 for our VLA, combined with the CAST data augmentation technique to improve instruction following without new data collection.</li>
+                    
+                    <li>We should implement the 'functional correspondence' concept from MimicFunc to enable one-shot tool imitation from a single human video. The code is available and could drastically speed up teaching new tasks.</li>
+                    
+                    <li>Perception team: Benchmark our 6D pose estimation pipeline on the new MR6D dataset. It's designed for our exact mobile manipulator use-case and will reveal critical weaknesses.</li>
+                    
+                    <li>Let's evaluate the entropy-based imitation learning method from GEM. Its demonstrated 97% zero-shot success in a real-world canteen cleanup shows it's a practical path to reducing data needs.</li>
+                    
+                    <li>For dual-arm coordination, we can adapt the hierarchical approach from SGDT: use a high-level symbolic planner to generate subgoals for each arm, simplifying complex bimanual tasks.</li>
+                    
+                    <li>Navigation team: Review the IGHA* planner. Its code is available and could improve our mobile base's planning speed and reliability in cluttered environments.</li>
+                    
+                </ul>
+                
+                
+                <div class="highlights">
+                    <h4>✨ Highlights</h4>
+                    <ul>
+                        
+                        <li>{'type': 'Dataset', 'title': 'MR6D Benchmark', 'description': 'A new 6D pose estimation dataset tailored for mobile robots with long-range views and self-occlusion. Essential for validating our perception stack.'}</li>
+                        
+                        <li>{'type': 'Code Release', 'title': 'MimicFunc', 'description': 'Code is available to implement one-shot tool manipulation from a single human video, enabling generalization to new tools.'}</li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Top Picks -->
+        
+        <h2 class="section-header">🌟 Top 5 Picks</h2>
+        
+        
+        <div class="paper-card">
+            <div class="paper-content">
+                
+                <div class="paper-figure">
+                    <img src="https://arxiv.org/html/2508.14042/x1.png" 
+                         alt="Paper figure" 
+                         loading="lazy">
+                </div>
+                
+                
+                <div class="paper-details">
+                    <div class="paper-title">
+                        <a href="https://arxiv.org/abs/2508.14042" target="_blank">
+                            Train Once, Deploy Anywhere: Realize Data-Efficient Dynamic Object Manipulation
+                        </a>
+                    </div>
+                    
+                    <div class="badges">
+                        <span class="badge high-score">Score: 73.5</span>
+                        
+                        <span class="badge">Imitation / Diffusion / RL</span>
+                        
+                        <span class="badge">Grasping & Dexterous Manipulation</span>
+                        
+                        <span class="badge">Mobile Manipulation</span>
+                        
+                    </div>
+                    
+                    
+                    <div class="paper-summary">
+                        <strong>Summary:</strong> This paper introduces GEM, a data-efficient imitation learning framework for dynamic object manipulation designed for strong generalization. It leverages an entropy-based theoretical approach to optimize the learning process from a minimal number of demonstrations. The method was extensively validated in both simulation and the real world, demonstrating generalization across different robot embodiments, environments, and object types. Notably, it was deployed in a real canteen for tableware collection, achieving a 97% success rate over 10,000 trials without any in-scene demonstrations, proving its zero-shot capabilities in a practical setting.
+                    </div>
+                    
+                    
+                    <div class="why-matters">
+                        <strong>Why it matters:</strong> This paper presents a highly practical and data-efficient method for learning generalizable manipulation policies. For Droyd, this could significantly reduce the engineering effort and data collection time required to teach our dual-arm mobile manipulator new tasks, especially for dynamic scenarios like a canteen cleanup. The demonstrated real-world success and robustness are directly aligned with our goal of building a general-purpose robot.
+                    </div>
+                    
+                    <div class="paper-links">
+                        <a href="https://arxiv.org/pdf/2508.14042v1.pdf" target="_blank" class="primary">
+                            📄 PDF
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="paper-card">
+            <div class="paper-content">
+                
+                <div class="paper-figure">
+                    <img src="https://arxiv.org/html/2508.13534/imgs/concept_min.png" 
+                         alt="Paper figure" 
+                         loading="lazy">
+                </div>
+                
+                
+                <div class="paper-details">
+                    <div class="paper-title">
+                        <a href="https://arxiv.org/abs/2508.13534" target="_blank">
+                            MimicFunc: Imitating Tool Manipulation from a Single Human Video via Functional Correspondence
+                        </a>
+                    </div>
+                    
+                    <div class="badges">
+                        <span class="badge high-score">Score: 67.0</span>
+                        
+                        <span class="badge">Grasping & Dexterous Manipulation</span>
+                        
+                        <span class="badge">Imitation / Diffusion / RL</span>
+                        
+                        <span class="badge">Perception for Manipulation</span>
+                        
+                    </div>
+                    
+                    
+                    <div class="paper-summary">
+                        <strong>Summary:</strong> This paper introduces MimicFunc, a framework for one-shot imitation of tool manipulation from a single human RGB-D video. The method establishes 'functional correspondences' using keypoint-based abstractions to enable generalization to novel tools with similar functions, reducing the need for teleoperation data.
+                    </div>
+                    
+                    
+                    <div class="why-matters">
+                        <strong>Why it matters:</strong> This work is highly relevant as it addresses the critical challenge of tool generalization for manipulation. The ability to learn from a single human video and apply the skill to different tools could significantly accelerate our robot's ability to perform a wide range of tasks in human environments without extensive teleoperation or retraining for every new object.
+                    </div>
+                    
+                    <div class="paper-links">
+                        <a href="https://arxiv.org/pdf/2508.13534v1.pdf" target="_blank" class="primary">
+                            📄 PDF
+                        </a>
+                        
+                        <a href="https://sites.google.com/view/mimicfunc" target="_blank">
+                            💻 Code
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="paper-card">
+            <div class="paper-content">
+                
+                <div class="paper-figure">
+                    <img src="https://arxiv.org/html/2508.13998/x2.png" 
+                         alt="Paper figure" 
+                         loading="lazy">
+                </div>
+                
+                
+                <div class="paper-details">
+                    <div class="paper-title">
+                        <a href="https://arxiv.org/abs/2508.13998" target="_blank">
+                            Embodied-R1: Reinforced Embodied Reasoning for General Robotic Manipulation
+                        </a>
+                    </div>
+                    
+                    <div class="badges">
+                        <span class="badge high-score">Score: 66.0</span>
+                        
+                        <span class="badge">VLA / LLM-in-the-Loop</span>
+                        
+                        <span class="badge">Imitation / Diffusion / RL</span>
+                        
+                        <span class="badge">Datasets & Benchmarks</span>
+                        
+                    </div>
+                    
+                    
+                    <div class="paper-summary">
+                        <strong>Summary:</strong> This paper introduces 'pointing' as a unified, embodiment-agnostic intermediate representation to bridge the gap between high-level vision-language understanding and low-level robot actions. The authors present Embodied-R1, a 3B Vision-Language Model trained on a new 200K-sample dataset using a Reinforced Fine-tuning (RFT) curriculum. The model achieves state-of-the-art results on 11 benchmarks and demonstrates impressive zero-shot generalization with an 87.5% success rate on 8 real-world XArm manipulation tasks.
+                    </div>
+                    
+                    
+                    <div class="why-matters">
+                        <strong>Why it matters:</strong> The 'pointing' representation offers a powerful and generalizable method for translating high-level commands into actions, which could be directly applicable to our dual-arm mobile manipulator. The model's strong zero-shot performance on a real robot suggests this is a practical approach for improving our system's ability to handle novel tasks without task-specific fine-tuning, a key requirement for a general-purpose robot.
+                    </div>
+                    
+                    <div class="paper-links">
+                        <a href="https://arxiv.org/pdf/2508.13998v1.pdf" target="_blank" class="primary">
+                            📄 PDF
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="paper-card">
+            <div class="paper-content">
+                
+                <div class="paper-figure">
+                    <img src="https://arxiv.org/html/2508.13775/x1.png" 
+                         alt="Paper figure" 
+                         loading="lazy">
+                </div>
+                
+                
+                <div class="paper-details">
+                    <div class="paper-title">
+                        <a href="https://arxiv.org/abs/2508.13775" target="_blank">
+                            MR6D: Benchmarking 6D Pose Estimation for Mobile Robots
+                        </a>
+                    </div>
+                    
+                    <div class="badges">
+                        <span class="badge high-score">Score: 65.5</span>
+                        
+                        <span class="badge">Perception for Manipulation</span>
+                        
+                        <span class="badge">Datasets & Benchmarks</span>
+                        
+                        <span class="badge">Mobile Manipulation</span>
+                        
+                    </div>
+                    
+                    
+                    <div class="paper-summary">
+                        <strong>Summary:</strong> This paper introduces MR6D, a new benchmark dataset for 6D object pose estimation tailored to the challenges faced by mobile robots in industrial environments. It addresses the limitations of existing datasets that focus on small, tabletop objects by providing 92 real-world scenes with larger objects, long-range views, and complex self-occlusion. Initial experiments demonstrate that current state-of-the-art methods underperform on MR6D, highlighting a critical gap in perception capabilities for mobile platforms.
+                    </div>
+                    
+                    
+                    <div class="why-matters">
+                        <strong>Why it matters:</strong> Our mobile manipulator will face the exact perception challenges this dataset addresses: estimating poses of objects from a distance with potential self-occlusion from the robot's own body. This benchmark is highly valuable for testing, validating, and improving our own perception pipeline to ensure it is robust enough for real-world deployment.
+                    </div>
+                    
+                    <div class="paper-links">
+                        <a href="https://arxiv.org/pdf/2508.13775v1.pdf" target="_blank" class="primary">
+                            📄 PDF
+                        </a>
+                        
+                        
+                        <a href="https://huggingface.co/datasets/anas-gouda/mr6d" target="_blank">
+                            📊 Dataset
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="paper-card">
+            <div class="paper-content">
+                
+                <div class="paper-figure">
+                    <img src="https://arxiv.org/html/2508.14006/styles/7148.png" 
+                         alt="Paper figure" 
+                         loading="lazy">
+                </div>
+                
+                
+                <div class="paper-details">
+                    <div class="paper-title">
+                        <a href="https://arxiv.org/abs/2508.14006" target="_blank">
+                            ResPlan: A Large-Scale Vector-Graph Dataset of 17,000 Residential Floor Plans
+                        </a>
+                    </div>
+                    
+                    <div class="badges">
+                        <span class="badge high-score">Score: 52.0</span>
+                        
+                        <span class="badge">Datasets & Benchmarks</span>
+                        
+                        <span class="badge">Navigation & Mapping</span>
+                        
+                        <span class="badge">Task & Motion Planning</span>
+                        
+                    </div>
+                    
+                    
+                    <div class="paper-summary">
+                        <strong>Summary:</strong> This paper introduces ResPlan, a large-scale dataset of 17,000 realistic residential floor plans. The dataset includes detailed annotations of architectural elements and functional spaces, and is provided in both geometric and graph-based formats to support research in robotics, spatial AI, and simulation.
+                    </div>
+                    
+                    
+                    <div class="why-matters">
+                        <strong>Why it matters:</strong> This dataset is highly relevant for developing and benchmarking the navigation, mapping, and high-level task planning capabilities of our mobile manipulator. The realistic and diverse floor plans will allow us to train and test our robot's ability to understand and operate effectively in its target residential environments.
+                    </div>
+                    
+                    <div class="paper-links">
+                        <a href="https://arxiv.org/pdf/2508.14006v1.pdf" target="_blank" class="primary">
+                            📄 PDF
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Bucketed Papers (Collapsible) -->
+        
+        <h2 class="section-header">📁 Papers by Category</h2>
+        
+        
+        
+        <details>
+            <summary>
+                Bimanual / Dual-Arm Manipulation
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (1 paper)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13877" target="_blank">
+                                    Toward Deployable Multi-Robot Collaboration via a Symbolically-Guided Decision Transformer
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 38.6</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                The hierarchical approach of combining symbolic planning with a Decision Transformer is highly relevant for breaking down long-horizon, complex tasks for our dual-arm system. While focused on multi-robot systems, the method for coordinating actions based on high-level goals could be adapted for bimanual manipulation.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13877v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Mobile Manipulation
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (2 papers)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13564/fig_physical_ai_smart_spaces.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13564" target="_blank">
+                                    The 9th AI City Challenge
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 43.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This paper introduces valuable datasets and benchmarks for perception tasks that are critical for mobile manipulation, such as 3D tracking in dynamic environments and spatial reasoning in warehouses. Our perception team could use these resources to evaluate and improve our robot's scene understanding capabilities.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13564v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13531/whole_diagram_tr.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13531" target="_blank">
+                                    A Three-Level Whole-Body Disturbance Rejection Control Framework for Dynamic Motions in Legged Robots
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 41.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                While focused on legged locomotion, the concepts of whole-body control and disturbance rejection are conceptually relevant for improving the robustness of our wheeled mobile manipulator, especially when dealing with unexpected contacts or carrying payloads.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13531v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Perception for Manipulation
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (1 paper)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13564/fig_physical_ai_smart_spaces.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13564" target="_blank">
+                                    The 9th AI City Challenge
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 43.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This paper introduces valuable datasets and benchmarks for perception tasks that are critical for mobile manipulation, such as 3D tracking in dynamic environments and spatial reasoning in warehouses. Our perception team could use these resources to evaluate and improve our robot's scene understanding capabilities.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13564v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                VLA / LLM-in-the-Loop
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (1 paper)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13446/x1.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13446" target="_blank">
+                                    CAST: Counterfactual Labels Improve Instruction Following in Vision-Language-Action Models
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 48.0</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This data augmentation technique could be directly applied to our manipulation datasets to improve our VLA's understanding of nuanced, fine-grained user commands, potentially reducing the need for expensive real-world data collection.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13446v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Imitation / Diffusion / RL
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (2 papers)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13446/x1.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13446" target="_blank">
+                                    CAST: Counterfactual Labels Improve Instruction Following in Vision-Language-Action Models
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 48.0</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This data augmentation technique could be directly applied to our manipulation datasets to improve our VLA's understanding of nuanced, fine-grained user commands, potentially reducing the need for expensive real-world data collection.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13446v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13877" target="_blank">
+                                    Toward Deployable Multi-Robot Collaboration via a Symbolically-Guided Decision Transformer
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 38.6</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                The hierarchical approach of combining symbolic planning with a Decision Transformer is highly relevant for breaking down long-horizon, complex tasks for our dual-arm system. While focused on multi-robot systems, the method for coordinating actions based on high-level goals could be adapted for bimanual manipulation.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13877v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Datasets & Benchmarks
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (1 paper)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13564/fig_physical_ai_smart_spaces.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13564" target="_blank">
+                                    The 9th AI City Challenge
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 43.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This paper introduces valuable datasets and benchmarks for perception tasks that are critical for mobile manipulation, such as 3D tracking in dynamic environments and spatial reasoning in warehouses. Our perception team could use these resources to evaluate and improve our robot's scene understanding capabilities.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13564v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Task & Motion Planning
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (4 papers)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13392/x1.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13392" target="_blank">
+                                    Incremental Generalized Hybrid A*
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 51.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                Our mobile manipulator requires an efficient and robust navigation stack. While this paper focuses on off-road driving, the fundamental improvements to Hybrid A* for kinodynamic planning are relevant and could be adapted for our robot's base, potentially enabling faster and more reliable navigation in cluttered human environments.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13392v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                <a href="https://github.com/personalrobotics/IGHAStar" target="_blank">
+                                    💻 Code
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13513/figure/figure_hmpc.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13513" target="_blank">
+                                    Unified Hierarchical MPC in Task Executing for Modular Manipulators across Diverse Morphologies
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 46.1</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This adaptive control approach could be valuable for our dual-arm system, potentially simplifying the control of two arms or adapting to different tool configurations. Its ability to handle singularities and its validation on a real robot make it a practical method for improving the robustness of our manipulation tasks.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13513v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13531/whole_diagram_tr.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13531" target="_blank">
+                                    A Three-Level Whole-Body Disturbance Rejection Control Framework for Dynamic Motions in Legged Robots
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 41.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                While focused on legged locomotion, the concepts of whole-body control and disturbance rejection are conceptually relevant for improving the robustness of our wheeled mobile manipulator, especially when dealing with unexpected contacts or carrying payloads.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13531v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13877" target="_blank">
+                                    Toward Deployable Multi-Robot Collaboration via a Symbolically-Guided Decision Transformer
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 38.6</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                The hierarchical approach of combining symbolic planning with a Decision Transformer is highly relevant for breaking down long-horizon, complex tasks for our dual-arm system. While focused on multi-robot systems, the method for coordinating actions based on high-level goals could be adapted for bimanual manipulation.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13877v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Humanoids & Legged
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (1 paper)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13531/whole_diagram_tr.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13531" target="_blank">
+                                    A Three-Level Whole-Body Disturbance Rejection Control Framework for Dynamic Motions in Legged Robots
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 41.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                While focused on legged locomotion, the concepts of whole-body control and disturbance rejection are conceptually relevant for improving the robustness of our wheeled mobile manipulator, especially when dealing with unexpected contacts or carrying payloads.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13531v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Safety & Reliability
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (2 papers)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13513/figure/figure_hmpc.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13513" target="_blank">
+                                    Unified Hierarchical MPC in Task Executing for Modular Manipulators across Diverse Morphologies
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 46.1</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This adaptive control approach could be valuable for our dual-arm system, potentially simplifying the control of two arms or adapting to different tool configurations. Its ability to handle singularities and its validation on a real robot make it a practical method for improving the robustness of our manipulation tasks.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13513v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13531/whole_diagram_tr.jpg" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13531" target="_blank">
+                                    A Three-Level Whole-Body Disturbance Rejection Control Framework for Dynamic Motions in Legged Robots
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 41.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                While focused on legged locomotion, the concepts of whole-body control and disturbance rejection are conceptually relevant for improving the robustness of our wheeled mobile manipulator, especially when dealing with unexpected contacts or carrying payloads.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13531v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Navigation & Mapping
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (2 papers)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13392/x1.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13392" target="_blank">
+                                    Incremental Generalized Hybrid A*
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 51.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                Our mobile manipulator requires an efficient and robust navigation stack. While this paper focuses on off-road driving, the fundamental improvements to Hybrid A* for kinodynamic planning are relevant and could be adapted for our robot's base, potentially enabling faster and more reliable navigation in cluttered human environments.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13392v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                <a href="https://github.com/personalrobotics/IGHAStar" target="_blank">
+                                    💻 Code
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13446/x1.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13446" target="_blank">
+                                    CAST: Counterfactual Labels Improve Instruction Following in Vision-Language-Action Models
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 48.0</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                This data augmentation technique could be directly applied to our manipulation datasets to improve our VLA's understanding of nuanced, fine-grained user commands, potentially reducing the need for expensive real-world data collection.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13446v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        <details>
+            <summary>
+                Systems & Infrastructure
+                <span style="color: #6B7280; font-weight: 400; font-size: 14px;">
+                    (1 paper)
+                </span>
+            </summary>
+            
+            <div class="bucket-content">
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        
+                        <div class="paper-figure">
+                            <img src="https://arxiv.org/html/2508.13901/x1.png" 
+                                 alt="Paper figure" 
+                                 loading="lazy">
+                        </div>
+                        
+                        
+                        <div class="paper-details">
+                            <div class="paper-title">
+                                <a href="https://arxiv.org/abs/2508.13901" target="_blank">
+                                    Multimodal Data Storage and Retrieval for Embodied AI: A Survey
+                                </a>
+                            </div>
+                            
+                            <div class="badges">
+                                <span class="badge">Score: 47.5</span>
+                            </div>
+                            
+                            <div class="paper-summary">
+                                As we scale our data collection for training learning-based models (VLAs, diffusion policies), having a robust and efficient data storage and retrieval system is critical. This survey provides a comprehensive overview of the available technologies and challenges, which can directly inform our data infrastructure and MLOps strategy.
+                            </div>
+                            
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/pdf/2508.13901v1.pdf" target="_blank">
+                                    📄 PDF
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </details>
+        
+        
+        
+        
+        <!-- Also Noteworthy -->
+        
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                📊 27 papers processed • 
+                Categories: cs.RO
+            </p>
+            <p style="margin-top: 8px;">
+                Built with ❤️ by <strong>Droyd</strong>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

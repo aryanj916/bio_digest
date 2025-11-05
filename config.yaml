@@ -1,0 +1,100 @@
+digest:
+  fetch:
+    use_rss: false  # Disable arXiv RSS
+    use_pubmed: true  # Enable PubMed
+    use_biorxiv: true  # Enable bioRxiv/medRxiv
+    
+    # PubMed search queries for AI medicine, biotech, drug discovery
+    pubmed_queries:
+      - "(artificial intelligence[Title/Abstract] OR machine learning[Title/Abstract] OR deep learning[Title/Abstract]) AND (diagnosis[Title/Abstract] OR diagnostic[Title/Abstract] OR medical imaging[Title/Abstract])"
+      - "(artificial intelligence[Title/Abstract] OR machine learning[Title/Abstract]) AND (drug discovery[Title/Abstract] OR compound screening[Title/Abstract] OR drug design[Title/Abstract])"
+      - "(machine learning[Title/Abstract] OR deep learning[Title/Abstract]) AND (protein[Title/Abstract] OR bioinformatics[Title/Abstract] OR genomics[Title/Abstract])"
+      - "(artificial intelligence[Title/Abstract] OR machine learning[Title/Abstract]) AND (clinical decision[Title/Abstract] OR predictive analytics[Title/Abstract] OR healthcare[Title/Abstract])"
+      - "(machine learning[Title/Abstract] OR deep learning[Title/Abstract]) AND (EEG[Title/Abstract] OR fNIRS[Title/Abstract] OR brain-computer interface[Title/Abstract] OR neuroscience[Title/Abstract])"
+    
+    # bioRxiv/medRxiv categories
+    biorxiv_categories: ["biorxiv", "medrxiv"]
+    
+    days_lookback: 1  # Look back 1 day for daily digest
+    hours_lookback: 36  # Legacy for arXiv RSS (not used)
+    max_items_per_feed: 200
+    only_new_submissions: true
+  
+  schedule:
+    timezone: "America/Los_Angeles"
+    run_at_local: "09:00"  # 9:00 AM PST
+    days_of_week: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]  # Only weekdays
+  
+  recipients:
+    - "aryan@mindcompany.ai"
+  
+  from_email: "digest@internal.mindcompany.ai"
+  from_name: "Bio Daily Research Digest"
+  
+  top_picks: 5
+  min_relevance: 50
+  
+  # Greylist terms - keep if they have transferable AI/ML methods
+  greylist_terms: ["veterinary", "animal model", "in vitro only", "theoretical only"]
+  greylist_keep_if_keywords: ["machine learning", "deep learning", "neural network", "AI", "clinical validation", "human study"]
+  
+  # Boost terms for scoring
+  boost_terms: 
+    high: ["clinical trial", "FDA", "clinical validation", "patient outcomes", "large language model", "foundation model", "AlphaFold", "drug discovery"]
+    medium: ["deep learning", "machine learning", "neural network", "transformer", "diffusion model", "generative model", "protein folding", "biomarker"]
+    low: ["AI", "artificial intelligence", "predictive", "diagnostic", "computational", "bioinformatics", "precision medicine"]
+  
+  # Hard drop terms (only if no boost terms present)
+  drop_terms: ["pure chemistry", "non-AI", "traditional statistics only"]
+
+buckets:
+  - name: "AI Diagnostics & Medical Imaging"
+    keywords: ["diagnosis", "diagnostic", "medical imaging", "radiology", "pathology", "CT", "MRI", "X-ray", "ultrasound", "image analysis"]
+  
+  - name: "Drug Discovery & Compound Screening"
+    keywords: ["drug discovery", "compound screening", "drug design", "virtual screening", "molecular docking", "ADMET", "lead optimization", "high-throughput"]
+  
+  - name: "Protein Modeling & Bioinformatics"
+    keywords: ["protein", "protein folding", "AlphaFold", "structure prediction", "molecular dynamics", "bioinformatics", "proteomics", "protein-protein interaction"]
+  
+  - name: "Clinical Decision Support & Predictive Analytics"
+    keywords: ["clinical decision", "clinical prediction", "risk prediction", "early warning", "sepsis prediction", "ICU", "patient outcomes", "prognostic"]
+  
+  - name: "Neuroscience & Brain-Computer Interfaces"
+    keywords: ["neuroscience", "brain-computer interface", "BCI", "neural decoding", "brain activity", "cognitive", "neuroimaging", "fMRI"]
+  
+  - name: "EEG/fNIRS & Bio-signal Analysis"
+    keywords: ["EEG", "fNIRS", "ECG", "EMG", "biosignal", "physiological signal", "wearable", "continuous monitoring", "signal processing"]
+  
+  - name: "Genomics & Computational Biology"
+    keywords: ["genomics", "gene expression", "RNA-seq", "CRISPR", "gene editing", "variant calling", "transcriptomics", "single-cell", "spatial transcriptomics"]
+  
+  - name: "Healthcare AI Models & LLMs"
+    keywords: ["large language model", "LLM", "GPT", "BERT", "foundation model", "clinical NLP", "medical NLP", "electronic health record", "EHR", "clinical notes"]
+  
+  - name: "Datasets & Clinical Benchmarks"
+    keywords: ["dataset", "benchmark", "clinical trial data", "medical dataset", "evaluation", "metrics", "validation study"]
+  
+  - name: "Medical Robotics & Surgical AI"
+    keywords: ["surgical", "surgery", "robotic surgery", "minimally invasive", "da Vinci", "surgical robot", "intervention", "endoscopy"]
+
+# Feature flags and integrations
+features:
+  include_figures: true
+  include_x_posts: false  # Disable X posts for now
+  build_web_view: false  # Disabled since GitHub Pages deployment is not working
+  include_digest_summary: true
+
+media:
+  prefer_ar5iv: true
+  fallback_pdf_preview: true
+  generate_pdf_previews: true
+  pdf_preview_page: 1
+
+x:
+  bearer_token: ""
+  max_results_per_paper: 1
+
+# Optional web configuration
+web:
+  public_url: ""  # Set to your GitHub Pages URL to make email button clickable locally
