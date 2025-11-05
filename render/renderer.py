@@ -47,6 +47,18 @@ class EmailRenderer:
         """Map bucket names to inline badge styles using tokens."""
         c = self.tokens["color"]
         bucket_to_hex = {
+            # Biomedical AI buckets
+            "AI Diagnostics & Medical Imaging": c["accent4"],
+            "Drug Discovery & Compound Screening": c["accent1"],
+            "Protein Modeling & Bioinformatics": c["accent5"],
+            "Clinical Decision Support & Predictive Analytics": c["accent2"],
+            "Neuroscience & Brain-Computer Interfaces": "#8B5CF6",
+            "EEG/fNIRS & Bio-signal Analysis": "#06B6D4",
+            "Genomics & Computational Biology": c["accent3"],
+            "Healthcare AI Models & LLMs": c["primary"],
+            "Datasets & Clinical Benchmarks": c["primaryHi"],
+            "Medical Robotics & Surgical AI": "#EC4899",
+            # Legacy robotics buckets (for backward compatibility)
             "VLA / LLM-in-the-Loop": c["accent1"],
             "Imitation / Diffusion / RL": c["accent2"],
             "Perception for Manipulation": c["accent3"],
@@ -104,6 +116,17 @@ class EmailRenderer:
         web_view_url = metadata.get('web_view_url')
         
         # Prepare template variables
+        # Build categories string based on fetch configuration
+        fetch_config = self.config['digest']['fetch']
+        categories_parts = []
+        if fetch_config.get('use_pubmed'):
+            categories_parts.append('PubMed')
+        if fetch_config.get('use_biorxiv'):
+            categories_parts.append('bioRxiv/medRxiv')
+        if fetch_config.get('use_rss') and fetch_config.get('categories'):
+            categories_parts.extend(fetch_config['categories'])
+        categories_str = ', '.join(categories_parts) if categories_parts else 'Multiple sources'
+        
         context = {
             'date': datetime.now().strftime("%Y-%m-%d"),
             'date_formatted': date_formatted,
@@ -111,8 +134,8 @@ class EmailRenderer:
             'buckets': buckets,
             'also_noteworthy': also_noteworthy,
             'filtered_out': filtered_out,
-            'hours_lookback': self.config['digest']['fetch']['hours_lookback'],
-            'categories_str': ', '.join(self.config['digest']['fetch']['categories']),
+            'hours_lookback': self.config['digest']['fetch'].get('hours_lookback', 24),
+            'categories_str': categories_str,
             'tokens': self.tokens,
             'badge_style_by_bucket': self._build_badge_style_map(),
             'from_email': self.config['digest'].get('from_email', ''),

@@ -107,6 +107,17 @@ class WebRenderer:
         date_formatted = datetime.now().strftime("%A, %B %d, %Y")
         
         # Prepare template variables
+        # Build categories string based on fetch configuration
+        fetch_config = self.config['digest']['fetch']
+        categories_parts = []
+        if fetch_config.get('use_pubmed'):
+            categories_parts.append('PubMed')
+        if fetch_config.get('use_biorxiv'):
+            categories_parts.append('bioRxiv/medRxiv')
+        if fetch_config.get('use_rss') and fetch_config.get('categories'):
+            categories_parts.extend(fetch_config['categories'])
+        categories_str = ', '.join(categories_parts) if categories_parts else 'Multiple sources'
+        
         context = {
             'date': datetime.now().strftime("%Y-%m-%d"),
             'date_formatted': date_formatted,
@@ -114,8 +125,8 @@ class WebRenderer:
             'buckets': buckets,
             'also_noteworthy': also_noteworthy,
             'digest_summary': digest_summary,
-            'hours_lookback': self.config['digest']['fetch']['hours_lookback'],
-            'categories_str': ', '.join(self.config['digest']['fetch']['categories']),
+            'hours_lookback': self.config['digest']['fetch'].get('hours_lookback', 24),
+            'categories_str': categories_str,
             'total_papers': metadata.get('total_papers', 0) if metadata else 0
         }
         

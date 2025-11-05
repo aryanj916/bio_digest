@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Daily Research Digest - 2025-11-05</title>
+    <style>
+        /* Reset and base styles */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+        body { margin: 0; padding: 0; width: 100% !important; min-width: 100%; background-color: #FAFAFA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1F2937; }
+        
+        /* Container */
+        .container { max-width: 680px; margin: 0 auto; background-color: #FAFAFA; }
+        
+        /* Header - Medical blue/teal gradient */
+        .header { background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%); color: white; padding: 28px 28px 22px; text-align: left; border-radius: 28px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .header h1 { margin: 0; font-size: 22px; font-weight: 700; color: white; }
+        .header .date { margin-top: 8px; font-size: 12px; opacity: 0.9; font-weight: 600; }
+        .brand { display:block; margin:0 auto; text-align:center; color:#FFFFFF; font:700 20px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        /* Digest Summary */
+        .digest-summary { margin-top: 16px; padding: 14px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 14px; }
+        .digest-summary h3 { margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: white; }
+        .digest-summary ul { margin: 0 0 0 20px; padding: 0; }
+        .digest-summary li { margin: 4px 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.95); }
+        
+        /* Web View Link */
+        .web-view-link { display: inline-block; margin-top: 12px; padding: 8px 16px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        .web-view-link:hover { background: rgba(255,255,255,0.25); }
+        
+        /* Section */
+        .section { padding: 24px 6px; }
+        .section-title { font-size: 18px; font-weight: 700; color: #374151; margin: 0 0 14px 0; }
+        
+        /* Paper card */
+        .paper { margin-bottom: 18px; padding: 18px 18px 16px; background: #FFFFFF; border-radius: 20px; border: 1px solid #E5E7EB; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .paper-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .paper-title a { color: #1F2937; text-decoration: none; }
+        .paper-title a:hover { color: #4F46E5; text-decoration: none; }
+        
+        /* Paper Figure */
+        .paper-figure { margin: 10px 0; text-align: center; }
+        .paper-figure img { max-width: 100%; height: auto; max-height: 200px; border-radius: 12px; border: 1px solid #E5E7EB; }
+        
+        /* Badges */
+        .badges { margin: 8px 0; }
+        .badge { display: inline-block; padding: 6px 8px; margin-right: 6px; margin-bottom: 6px; background: rgba(16,185,129,.1); color: #065F46; font-size: 11px; font-weight: 700; border-radius: 999px; border:1px solid rgba(16,185,129,.3); letter-spacing:.4px; text-transform:uppercase }
+        .badge.high-priority { background: rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.3); color: #3730A3; }
+        
+        /* Summary and why it matters */
+        .summary { margin: 10px 0; color: #1F2937; font-size: 14px; line-height: 1.55; }
+        .why-matters { margin: 10px 0; padding: 12px; background: rgba(99,102,241,.05); border-radius: 14px; font-size: 13px; color: #1F2937; border:1px solid rgba(99,102,241,.2); }
+        
+        /* Links */
+        .paper-links { margin-top: 10px; }
+        .paper-links a { display: inline-block; margin-right: 8px; padding: 9px 12px; background: #F3F4F6; color: #374151; text-decoration: none; font-size: 13px; font-weight:600; border-radius: 12px; border:1px solid #D1D5DB; }
+        .paper-links a.secondary { background: #ECFDF5; border:1px solid #10B981; color: #065F46; }
+        .paper-links a.x-link { background: #F0F9FF; border:1px solid #0EA5E9; color: #075985; }
+        
+        /* Bucket list */
+        .bucket-list { margin: 15px 0; }
+        .bucket-item { margin-bottom: 16px; padding: 16px; background: #FFFFFF; border-radius: 14px; border:1px solid #E5E7EB; min-height: 120px; }
+        .bucket-item-title { font-weight: 700; margin-bottom: 5px; }
+        .bucket-item-title a { color: #1F2937; text-decoration: none; }
+        .bucket-item-title a:hover { color: #4F46E5; }
+        .bucket-item-summary { font-size: 13px; color: #6B7280; }
+        .bucket-item-meta { margin-top: 8px; font-size: 12px; }
+        .bucket-item-meta a { color: #6366F1; text-decoration: none; font-weight: 600; }
+        
+        /* Footer */
+        .footer { padding: 20px; text-align: center; font-size: 12px; color: #6B7280; }
+        .footer a { color: #6366F1; text-decoration: none; }
+        
+        /* Mobile responsive */
+        @media screen and (max-width: 680px) {
+            .container { width: 100% !important; }
+            .section { padding: 20px 15px; }
+            .paper { padding: 12px; }
+            .paper-title { font-size: 15px; }
+            .paper-figure img { max-height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="brand">Droyd</div>
+            <div class="date">Wednesday, November 05, 2025</div>
+            
+            
+            
+            <a href="https://pubmed.ncbi.nlm.nih.gov/" style="display:inline-block;margin-top:10px;font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:white;text-decoration:none;outline:none;border:none;">View on PubMed →</a>
+            <a href="https://www.biorxiv.org/" style="display:inline-block;margin-top:10px;margin-left:12px;font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:white;text-decoration:none;outline:none;border:none;">View on bioRxiv →</a>
+        </div>
+        
+        <!-- Top Picks Section -->
+        
+        <div class="section">
+            <h2 class="section-title">🌟 Top 3 Picks</h2>
+            <p style="font-size: 14px; color: #6b7280; margin-bottom: 20px;">
+                Most impactful papers for biotech innovation, clinical AI, and neurotech
+            </p>
+            
+            
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://doi.org/10.1101/2025.10.18.680935" target="_blank">Advancing Protein Ensemble Predictions Across the Order-Disorder Continuum</a>
+                    
+                </div>
+                
+                <div class="badges">
+                    
+                    <span class="badge high-priority" style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Protein Modeling & Bioinformatics</span>
+                    
+                    <span class="badge " style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Drug Discovery & Compound Screening</span>
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> State-of-the-art protein structure predictors like AlphaFold perform poorly on intrinsically disordered proteins (IDPs), which are implicated in numerous diseases. This paper introduces PeptoneBench and PepTron, a flow-matching generative model trained with synthetic disordered ensembles, achieving performance comparable to computationally expensive simulation methods.
+                </div>
+                
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> This work addresses a major limitation of current protein structure predictors like AlphaFold by improving the modeling of intrinsically disordered proteins (IDPs). Since IDPs are crucial in many diseases and are challenging drug targets, this could significantly advance structure-based drug discovery.
+                </div>
+                
+                <div class="paper-links">
+                    <a href="https://www.biorxiv.org/content/10.1101/2025.10.18.680935v1.full.pdf" target="_blank">📄 PDF</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://doi.org/10.1101/2025.11.03.686348" target="_blank">Himito: a Graph-based Toolkit for Mitochondrial Genome Analysis using Long Reads</a>
+                    
+                </div>
+                
+                <div class="badges">
+                    
+                    <span class="badge high-priority" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Genomics & Computational Biology</span>
+                    
+                    <span class="badge " style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Protein Modeling & Bioinformatics</span>
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> Himito is a new graph-based bioinformatics toolkit for analyzing mitochondrial genomes using long-read sequencing data. It offers superior performance in variant calling and assembly, and enables integrated analysis of genetic and epigenetic modifications, as demonstrated on the large 'All of Us' human dataset.
+                </div>
+                
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> This toolkit provides a superior, integrated method for analyzing mitochondrial DNA from long-read sequencing, crucial for understanding aging and diseases linked to mitochondrial dysfunction. Validated on the large-scale 'All of Us' dataset, it demonstrates real-world utility in identifying pathogenic variants.
+                </div>
+                
+                <div class="paper-links">
+                    <a href="https://www.biorxiv.org/content/10.1101/2025.11.03.686348v1.full.pdf" target="_blank">📄 PDF</a>
+                    
+                    <a href="https://github.com/broadinstitute/Himito" target="_blank">💻 Code</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://doi.org/10.1101/2025.09.27.678895" target="_blank">Multimodal Imaging and Logistic Weighted Cognitive Scores for Classification of MCI, AD, and FTD Subtypes</a>
+                    
+                </div>
+                
+                <div class="badges">
+                    
+                    <span class="badge high-priority" style="background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">AI Diagnostics & Medical Imaging</span>
+                    
+                    <span class="badge " style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Neuroscience & Brain-Computer Interfaces</span>
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> This study developed a model to classify dementia subtypes (MCI, AD, FTD) by combining structural MRI and FDG-PET imaging features, weighted by cognitive scores from the ACE-III test. Using a Naive Bayes classifier on data from 100 participants, the model achieved moderate overall accuracy (68%).
+                </div>
+                
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> This paper addresses the significant clinical challenge of differentiating between dementia subtypes like Alzheimer's and FTD, which often have overlapping symptoms. Its novelty lies in integrating cognitive test scores directly with multimodal neuroimaging data to potentially improve diagnostic precision in early stages.
+                </div>
+                
+                <div class="paper-links">
+                    <a href="https://www.biorxiv.org/content/10.1101/2025.09.27.678895v1.full.pdf" target="_blank">📄 PDF</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <!-- Papers by Bucket -->
+        
+        
+        <div class="section">
+            <h3 class="section-title">AI Diagnostics & Medical Imaging (1)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.09.27.678895" target="_blank">Multimodal Imaging and Logistic Weighted Cognitive Scores for Classification of MCI, AD, and FTD Subtypes</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This paper addresses the significant clinical challenge of differentiating between dementia subtypes like Alzheimer's and FTD, which often have overlapping symptoms. Its novelty lies in integrating cognitive test scores directly with multimodal neuroimaging data to potentially improve diagnostic precision in early stages.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.09.27.678895v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Drug Discovery & Compound Screening (1)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.10.18.680935" target="_blank">Advancing Protein Ensemble Predictions Across the Order-Disorder Continuum</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This work addresses a major limitation of current protein structure predictors like AlphaFold by improving the modeling of intrinsically disordered proteins (IDPs). Since IDPs are crucial in many diseases and are challenging drug targets, this could significantly advance structure-based drug discovery.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.10.18.680935v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Protein Modeling & Bioinformatics (2)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.10.18.680935" target="_blank">Advancing Protein Ensemble Predictions Across the Order-Disorder Continuum</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This work addresses a major limitation of current protein structure predictors like AlphaFold by improving the modeling of intrinsically disordered proteins (IDPs). Since IDPs are crucial in many diseases and are challenging drug targets, this could significantly advance structure-based drug discovery.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.10.18.680935v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.11.03.686348" target="_blank">Himito: a Graph-based Toolkit for Mitochondrial Genome Analysis using Long Reads</a>
+                        
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This toolkit provides a superior, integrated method for analyzing mitochondrial DNA from long-read sequencing, crucial for understanding aging and diseases linked to mitochondrial dysfunction. Validated on the large-scale 'All of Us' dataset, it demonstrates real-world utility in identifying pathogenic variants.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.11.03.686348v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Neuroscience & Brain-Computer Interfaces (1)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.09.27.678895" target="_blank">Multimodal Imaging and Logistic Weighted Cognitive Scores for Classification of MCI, AD, and FTD Subtypes</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This paper addresses the significant clinical challenge of differentiating between dementia subtypes like Alzheimer's and FTD, which often have overlapping symptoms. Its novelty lies in integrating cognitive test scores directly with multimodal neuroimaging data to potentially improve diagnostic precision in early stages.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.09.27.678895v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Genomics & Computational Biology (3)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.11.03.686348" target="_blank">Himito: a Graph-based Toolkit for Mitochondrial Genome Analysis using Long Reads</a>
+                        
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This toolkit provides a superior, integrated method for analyzing mitochondrial DNA from long-read sequencing, crucial for understanding aging and diseases linked to mitochondrial dysfunction. Validated on the large-scale 'All of Us' dataset, it demonstrates real-world utility in identifying pathogenic variants.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.11.03.686348v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.11.04.686578" target="_blank">Agent-based simulations of lung tumour evolution suggest that ongoing cell competition drives realistic clonal expansions</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This paper demonstrates how agent-based simulations can be tailored to more accurately model the complex dynamics of tumor growth, specifically clonal expansion in lung cancer. This improved realism is a foundational step towards creating better in-silico models for studying cancer and potentially testing therapeutic strategies.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.11.04.686578v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://doi.org/10.1101/2025.10.28.685244" target="_blank">Reversing transgene silencing via targeted chromatin editing</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This work provides a foundational bioengineering tool for controlling gene expression in mammalian cells, which is critical for developing stable cell lines for biomanufacturing and cell-based therapies. The methodology for reversing gene silencing has significant biotech potential.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://www.biorxiv.org/content/10.1101/2025.10.28.685244v1.full.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <!-- Also Noteworthy -->
+        
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                Papers from the last 24 hours | 
+                Sources: PubMed, bioRxiv, medRxiv
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="mailto:digest@internal.mindcompany.ai?subject=Manage%20recipients">Manage recipients</a> | 
+                <span>Bio Daily Research Digest</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

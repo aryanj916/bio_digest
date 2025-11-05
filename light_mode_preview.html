@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Daily Research Digest - 2025-11-05</title>
+    <style>
+        /* Reset and base styles */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+        body { margin: 0; padding: 0; width: 100% !important; min-width: 100%; background-color: #FAFAFA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1F2937; }
+        
+        /* Container */
+        .container { max-width: 680px; margin: 0 auto; background-color: #FAFAFA; }
+        
+        /* Header - Medical blue/teal gradient */
+        .header { background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%); color: white; padding: 28px 28px 22px; text-align: left; border-radius: 28px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .header h1 { margin: 0; font-size: 22px; font-weight: 700; color: white; }
+        .header .date { margin-top: 8px; font-size: 12px; opacity: 0.9; font-weight: 600; }
+        .brand { display:block; margin:0 auto; text-align:center; color:#FFFFFF; font:700 20px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        /* Digest Summary */
+        .digest-summary { margin-top: 16px; padding: 14px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 14px; }
+        .digest-summary h3 { margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: white; }
+        .digest-summary ul { margin: 0 0 0 20px; padding: 0; }
+        .digest-summary li { margin: 4px 0; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.95); }
+        
+        /* Web View Link */
+        .web-view-link { display: inline-block; margin-top: 12px; padding: 8px 16px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        .web-view-link:hover { background: rgba(255,255,255,0.25); }
+        
+        /* Section */
+        .section { padding: 24px 6px; }
+        .section-title { font-size: 18px; font-weight: 700; color: #374151; margin: 0 0 14px 0; }
+        
+        /* Paper card */
+        .paper { margin-bottom: 18px; padding: 18px 18px 16px; background: #FFFFFF; border-radius: 20px; border: 1px solid #E5E7EB; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .paper-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .paper-title a { color: #1F2937; text-decoration: none; }
+        .paper-title a:hover { color: #4F46E5; text-decoration: none; }
+        
+        /* Paper Figure */
+        .paper-figure { margin: 10px 0; text-align: center; }
+        .paper-figure img { max-width: 100%; height: auto; max-height: 200px; border-radius: 12px; border: 1px solid #E5E7EB; }
+        
+        /* Badges */
+        .badges { margin: 8px 0; }
+        .badge { display: inline-block; padding: 6px 8px; margin-right: 6px; margin-bottom: 6px; background: rgba(16,185,129,.1); color: #065F46; font-size: 11px; font-weight: 700; border-radius: 999px; border:1px solid rgba(16,185,129,.3); letter-spacing:.4px; text-transform:uppercase }
+        .badge.high-priority { background: rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.3); color: #3730A3; }
+        
+        /* Summary and why it matters */
+        .summary { margin: 10px 0; color: #1F2937; font-size: 14px; line-height: 1.55; }
+        .why-matters { margin: 10px 0; padding: 12px; background: rgba(99,102,241,.05); border-radius: 14px; font-size: 13px; color: #1F2937; border:1px solid rgba(99,102,241,.2); }
+        
+        /* Links */
+        .paper-links { margin-top: 10px; }
+        .paper-links a { display: inline-block; margin-right: 8px; padding: 9px 12px; background: #F3F4F6; color: #374151; text-decoration: none; font-size: 13px; font-weight:600; border-radius: 12px; border:1px solid #D1D5DB; }
+        .paper-links a.secondary { background: #ECFDF5; border:1px solid #10B981; color: #065F46; }
+        .paper-links a.x-link { background: #F0F9FF; border:1px solid #0EA5E9; color: #075985; }
+        
+        /* Bucket list */
+        .bucket-list { margin: 15px 0; }
+        .bucket-item { margin-bottom: 16px; padding: 16px; background: #FFFFFF; border-radius: 14px; border:1px solid #E5E7EB; min-height: 120px; }
+        .bucket-item-title { font-weight: 700; margin-bottom: 5px; }
+        .bucket-item-title a { color: #1F2937; text-decoration: none; }
+        .bucket-item-title a:hover { color: #4F46E5; }
+        .bucket-item-summary { font-size: 13px; color: #6B7280; }
+        .bucket-item-meta { margin-top: 8px; font-size: 12px; }
+        .bucket-item-meta a { color: #6366F1; text-decoration: none; font-weight: 600; }
+        
+        /* Footer */
+        .footer { padding: 20px; text-align: center; font-size: 12px; color: #6B7280; }
+        .footer a { color: #6366F1; text-decoration: none; }
+        
+        /* Mobile responsive */
+        @media screen and (max-width: 680px) {
+            .container { width: 100% !important; }
+            .section { padding: 20px 15px; }
+            .paper { padding: 12px; }
+            .paper-title { font-size: 15px; }
+            .paper-figure img { max-height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="brand">Droyd</div>
+            <div class="date">Wednesday, November 05, 2025</div>
+            
+            
+            
+            <a href="https://pubmed.ncbi.nlm.nih.gov/" style="display:inline-block;margin-top:10px;font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:white;text-decoration:none;outline:none;border:none;">View on PubMed →</a>
+            <a href="https://www.biorxiv.org/" style="display:inline-block;margin-top:10px;margin-left:12px;font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:white;text-decoration:none;outline:none;border:none;">View on bioRxiv →</a>
+        </div>
+        
+        <!-- Top Picks Section -->
+        
+        <div class="section">
+            <h2 class="section-title">🌟 Top 3 Picks</h2>
+            <p style="font-size: 14px; color: #6b7280; margin-bottom: 20px;">
+                Most impactful papers for biotech innovation, clinical AI, and neurotech
+            </p>
+            
+            
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/abs/2508.10333" target="_blank">ReconVLA: Reconstructive Vision-Language-Action Model as Effective Robot Perceiver</a>
+                    
+                </div>
+                
+                <div class="badges">
+                    
+                    <span class="badge high-priority" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">VLA / LLM-in-the-Loop</span>
+                    
+                    <span class="badge " style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Perception for Manipulation</span>
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> This paper introduces ReconVLA, a Vision-Language-Action model that improves visual grounding for manipulation by using a reconstructive objective. The core method involves a diffusion transformer that reconstructs the target gaze region of an image from the VLA visual outputs.
+                </div>
+                
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> For our dual-arm mobile manipulator operating in complex human environments, accurately identifying and focusing on the correct object is critical. This paper offers a concrete method to improve the visual grounding of our VLA-based policies.
+                </div>
+                
+                <div class="paper-links">
+                    <a href="https://arxiv.org/pdf/2508.10333.pdf" target="_blank">📄 PDF</a>
+                    
+                    <a href="https://github.com/zionchow/ReconVLA" target="_blank">💻 Code</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/abs/2508.10511" target="_blank">KDPE: A Kernel Density Estimation Strategy for Diffusion Policy Trajectory Selection</a>
+                    
+                </div>
+                
+                <div class="badges">
+                    
+                    <span class="badge high-priority" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Imitation / Diffusion / RL</span>
+                    
+                    <span class="badge " style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Safety & Reliability</span>
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> This paper introduces KDPE, a method using Kernel Density Estimation to filter and select the best trajectories generated by a Diffusion Policy. This improves the policy reliability by rejecting stochastic or out-of-distribution outputs.
+                </div>
+                
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> Diffusion policies are a key area of interest for us. This paper addresses a major weakness: their stochasticity and tendency to learn outliers, which can lead to unsafe or failed actions.
+                </div>
+                
+                <div class="paper-links">
+                    <a href="https://arxiv.org/pdf/2508.10511.pdf" target="_blank">📄 PDF</a>
+                    
+                    <a href="https://hsp-iit.github.io/KDPE/" target="_blank">💻 Code</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/abs/2508.10399" target="_blank">Large Model Empowered Embodied AI: A Survey on Decision-Making and Embodied Learning</a>
+                    
+                </div>
+                
+                <div class="badges">
+                    
+                    <span class="badge high-priority" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">VLA / LLM-in-the-Loop</span>
+                    
+                    <span class="badge " style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.45);border-radius:999px;color:#1F2937;font:700 11px 'Segoe UI', Roboto, Arial, sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:6px 8px;display:inline-block;">Imitation / Diffusion / RL</span>
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div class="summary">
+                    <strong style="color:#6B7280">Summary:</strong> This survey provides a comprehensive overview of how large models are being used to advance embodied AI, focusing on decision-making paradigms like Vision-Language-Action (VLA) models and learning methodologies such as imitation and reinforcement learning.
+                </div>
+                
+                
+                <div class="why-matters">
+                    <strong style="color:#0EA5E9">Why it matters:</strong> As a comprehensive survey, this paper is a critical resource for understanding the current landscape of large models in robotics. It helps our team quickly get up to speed on state-of-the-art approaches.
+                </div>
+                
+                <div class="paper-links">
+                    <a href="https://arxiv.org/pdf/2508.10399.pdf" target="_blank">📄 PDF</a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <!-- Papers by Bucket -->
+        
+        
+        <div class="section">
+            <h3 class="section-title">VLA / LLM-in-the-Loop (3)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10333" target="_blank">ReconVLA: Reconstructive Vision-Language-Action Model as Effective Robot Perceiver</a>
+                        
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            For our dual-arm mobile manipulator operating in complex human environments, accurately identifying and focusing on the correct object is critical. This paper offers a concrete method to improve the visual grounding of our VLA-based policies.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10333.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10399" target="_blank">Large Model Empowered Embodied AI: A Survey on Decision-Making and Embodied Learning</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            As a comprehensive survey, this paper is a critical resource for understanding the current landscape of large models in robotics. It helps our team quickly get up to speed on state-of-the-art approaches.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10399.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10416" target="_blank">CorrectNav: Self-Correction Flywheel Empowers Vision-Language-Action Navigation Model</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            The self-correction flywheel concept is a potentially powerful and data-efficient way to improve model robustness. This paradigm could be adapted from navigation to our manipulation tasks.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10416.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Imitation / Diffusion / RL (2)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10511" target="_blank">KDPE: A Kernel Density Estimation Strategy for Diffusion Policy Trajectory Selection</a>
+                        
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            Diffusion policies are a key area of interest for us. This paper addresses a major weakness: their stochasticity and tendency to learn outliers, which can lead to unsafe or failed actions.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10511.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10399" target="_blank">Large Model Empowered Embodied AI: A Survey on Decision-Making and Embodied Learning</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            As a comprehensive survey, this paper is a critical resource for understanding the current landscape of large models in robotics. It helps our team quickly get up to speed on state-of-the-art approaches.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10399.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Perception for Manipulation (2)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10333" target="_blank">ReconVLA: Reconstructive Vision-Language-Action Model as Effective Robot Perceiver</a>
+                        
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            For our dual-arm mobile manipulator operating in complex human environments, accurately identifying and focusing on the correct object is critical. This paper offers a concrete method to improve the visual grounding of our VLA-based policies.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10333.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10398" target="_blank">Super LiDAR Reflectance for Robotic Perception</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This method could enable our mobile manipulator to use lower-cost LiDARs for robust, illumination-invariant 3D perception. Denser point clouds would improve object detection and scene understanding.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10398.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Safety & Reliability (2)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10511" target="_blank">KDPE: A Kernel Density Estimation Strategy for Diffusion Policy Trajectory Selection</a>
+                        
+                        <span style="color: #059669; font-size: 11px; margin-left: 5px;">✓ code</span>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            Diffusion policies are a key area of interest for us. This paper addresses a major weakness: their stochasticity and tendency to learn outliers, which can lead to unsafe or failed actions.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10511.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10416" target="_blank">CorrectNav: Self-Correction Flywheel Empowers Vision-Language-Action Navigation Model</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            The self-correction flywheel concept is a potentially powerful and data-efficient way to improve model robustness. This paradigm could be adapted from navigation to our manipulation tasks.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10416.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Navigation & Mapping (2)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10416" target="_blank">CorrectNav: Self-Correction Flywheel Empowers Vision-Language-Action Navigation Model</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            The self-correction flywheel concept is a potentially powerful and data-efficient way to improve model robustness. This paradigm could be adapted from navigation to our manipulation tasks.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10416.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10398" target="_blank">Super LiDAR Reflectance for Robotic Perception</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This method could enable our mobile manipulator to use lower-cost LiDARs for robust, illumination-invariant 3D perception. Denser point clouds would improve object detection and scene understanding.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10398.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3 class="section-title">Hardware & Mechatronics (1)</h3>
+            <div class="bucket-list">
+                
+                <div class="bucket-item">
+                    <div class="bucket-item-title">
+                        <a href="https://arxiv.org/abs/2508.10398" target="_blank">Super LiDAR Reflectance for Robotic Perception</a>
+                        
+                    </div>
+                    <div class="bucket-item-summary">
+                        
+                        
+                            This method could enable our mobile manipulator to use lower-cost LiDARs for robust, illumination-invariant 3D perception. Denser point clouds would improve object detection and scene understanding.
+                        
+                    </div>
+                    <div class="bucket-item-meta">
+                        <a href="https://arxiv.org/pdf/2508.10398.pdf" target="_blank" style="color: #6366F1; text-decoration: none; font-weight: 600; margin-right: 10px;">📄 PDF</a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        <!-- Also Noteworthy -->
+        
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                Papers from the last 24 hours | 
+                Sources: PubMed, bioRxiv, medRxiv
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="mailto:digest@internal.mindcompany.ai?subject=Manage%20recipients">Manage recipients</a> | 
+                <span>Bio Daily Research Digest</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
